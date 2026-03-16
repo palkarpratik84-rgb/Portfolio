@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<!--
+════════════════════════════════════════════════════════
+  PRATIK PALKAR — PORTFOLIO
+  File: index.html
+
+  HOW TO EDIT:
+  • Personal info    → edit directly in this file (index.html)
+  • Colors / fonts   → edit style.css
+  • Animations / JS  → edit script.js
+
+  SECTIONS TO EDIT:
+  • Hero name, tagline, description  → search "PRATIK" / "hero-text"
+  • About cards                      → search "about-card"
+  • Skills & percentages             → search "sk-bar" / "data-w"
+  • Projects (title, desc, tech)     → search "proj-title" / "proj-short"
+  • Contact links                    → search "contact-card"
+  • Typewriter lines                 → open script.js, find "const lines"
+════════════════════════════════════════════════════════
+-->
+
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Pratik Palkar — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div id="cursor"></div>
+<div id="cursor-dot"></div>
+
+<!-- DOMAIN EXPANSION INTRO -->
+<div class="domain-overlay" id="domainOverlay">
+  <div class="domain-hex"></div>
+  <div class="domain-rings">
+    <div class="domain-ring"></div>
+    <div class="domain-ring"></div>
+    <div class="domain-ring"></div>
+    <div class="domain-ring"></div>
+    <div class="domain-ring"></div>
+  </div>
+  <div class="domain-title">DOMAIN EXPANSION</div>
+  <div class="domain-sub">UNLIMITED VOID</div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">PRATIK R.<span>.</span>PALKAR</div>
+  <ul class="nav-links">
+    <li><a onclick="sTo('about')">About</a></li>
+    <li><a onclick="sTo('skills')">Skills</a></li>
+    <li><a onclick="sTo('projects')">Projects</a></li>
+    <li><a onclick="sTo('contact')">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+
+    <!-- CHARACTER -->
+    <div class="char-container" id="charBox" onmousemove="tiltChar(event,this)" onmouseleave="resetChar()">
+      <div class="char-aura-1"></div>
+      <div class="char-aura-2"></div>
+      <div class="status-badge"><span class="status-dot"></span>AVAILABLE FOR WORK</div>
+      <div class="energy-line"></div>
+      <div class="energy-line"></div>
+      <div class="energy-line"></div>
+      <div class="energy-line"></div>
+      <img class="char-img" id="charImg" src="anime-pratik.png" alt="Pratik Palkar"/>
+      <div class="char-glow-ring"></div>
+      <div class="orb" style="width:10px;height:10px;background:#00d4ff;box-shadow:0 0 10px #00d4ff;--r:130px;--s:0deg;animation-duration:6s;"></div>
+      <div class="orb" style="width:7px;height:7px;background:#a855f7;box-shadow:0 0 10px #a855f7;--r:118px;--s:120deg;animation-duration:8.5s;"></div>
+      <div class="orb" style="width:5px;height:5px;background:#00ffcc;box-shadow:0 0 10px #00ffcc;--r:138px;--s:240deg;animation-duration:7.2s;"></div>
+    </div>
+
+    <!-- TEXT -->
+    <div class="hero-text">
+      <div class="hero-tag">Student &amp; Developer — Pimpri, India</div>
+      <div class="hero-name">
+        <span class="first">PRATIK</span>
+        <span class="last">PALKAR</span>
+      </div>
+      <div class="hero-tagline"><span id="typeTarget" class="typewriter"></span></div>
+      <p class="hero-desc">
+        AI enthusiast building intelligent systems from scratch.<br/>
+        Creator of <strong>Jarvis AI</strong> and <strong>Nexa</strong> — vibecoding the future<br/>
+        with Python, automation, and multiple AI tools.
+      </p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="sTo('projects')"><span>View Projects</span></button>
+        <button class="btn-outline" onclick="sTo('contact')">Contact Me</button>
+      </div>
+      <div class="stats-row">
+        <div class="stat">
+          <div class="stat-num" id="s1">0</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" id="s2">0</div>
+          <div class="stat-label">Skills</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">INF</div>
+          <div class="stat-label">Cursed Energy</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="reveal">
+    <div class="sec-eyebrow">01 — Who Am I</div>
+    <div class="sec-title">ABOUT <span class="accent">ME</span></div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-card reveal reveal-d1" onmousemove="cardGlow(event,this)">
+      <div class="about-card-label">Identity</div>
+      <p>A passionate student and fresher diving deep into AI, automation, and tools that actually think. Turning complex ideas into clean, working code — one vibecoded line at a time.</p>
+    </div>
+    <div class="about-card reveal reveal-d2" onmousemove="cardGlow(event,this)">
+      <div class="about-card-label">AI &amp; Automation</div>
+      <p>Deeply fascinated by how AI works. Building systems that process natural language, automate tasks, and respond intelligently — powered by multiple AI models working together.</p>
+    </div>
+    <div class="about-card reveal reveal-d3" onmousemove="cardGlow(event,this)">
+      <div class="about-card-label">Interests</div>
+      <p>When not coding, strategizing through video games. Also constantly exploring new AI tooling, automation frameworks, and the future of intelligent systems.</p>
+    </div>
+    <div class="about-card reveal" onmousemove="cardGlow(event,this)">
+      <div class="about-card-label">Philosophy</div>
+      <p>Build systems that are lightweight, extensible, and genuinely useful. Start simple, design for scale, and use every tool available — including AI — to get there faster.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ SKILLS ══ -->
+<section id="skills">
+  <div class="reveal">
+    <div class="sec-eyebrow">02 — What I Do</div>
+    <div class="sec-title">CURSED <span class="accent">TECHNIQUES</span></div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="skills-grid reveal" id="skillsGrid">
+
+    <div class="skill-card">
+      <div class="skill-icon-box" style="--d:.1s">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="sk-name">Python</div>
+      <div class="sk-bar-bg"><div class="sk-bar" data-w=".85"></div></div>
+      <div class="sk-pct">85%</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon-box" style="--d:.25s">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <div class="sk-name">HTML / CSS</div>
+      <div class="sk-bar-bg"><div class="sk-bar" data-w=".80"></div></div>
+      <div class="sk-pct">80%</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon-box" style="--d:.4s">
+        <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      </div>
+      <div class="sk-name">JavaScript</div>
+      <div class="sk-bar-bg"><div class="sk-bar" data-w=".70"></div></div>
+      <div class="sk-pct">70%</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon-box" style="--d:.55s">
+        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+      </div>
+      <div class="sk-name">AI / ML</div>
+      <div class="sk-bar-bg"><div class="sk-bar" data-w=".75"></div></div>
+      <div class="sk-pct">75%</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon-box" style="--d:.7s">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="2" width="8" height="8" rx="1"/><rect x="2" y="14" width="8" height="8" rx="1"/><path d="M14 18h8M18 14v8"/></svg>
+      </div>
+      <div class="sk-name">Automation</div>
+      <div class="sk-bar-bg"><div class="sk-bar" data-w=".80"></div></div>
+      <div class="sk-pct">80%</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon-box" style="--d:.85s">
+        <svg viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+      </div>
+      <div class="sk-name">Terminal</div>
+      <div class="sk-bar-bg"><div class="sk-bar" data-w=".78"></div></div>
+      <div class="sk-pct">78%</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ PROJECTS ══ -->
+<section id="projects">
+  <div class="reveal">
+    <div class="sec-eyebrow">03 — Forbidden Arts</div>
+    <div class="sec-title">FORBIDDEN <span class="accent">TECHNIQUES</span></div>
+    <div class="sec-line"></div>
+
+    <!-- Vibecoding banner -->
+    <div class="vibe-banner">
+      <div class="vibe-banner-icon">
+        <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <div>
+        <div class="vibe-banner-label">Vibecoding Approach</div>
+        <p class="vibe-banner-text">
+          All projects on this portfolio were built using <strong>vibecoding</strong> — a development method where I collaborated with multiple AI models simultaneously to design, write, debug, and iterate the entire codebase from scratch.
+          Tools including <strong>ChatGPT, Claude, Gemini, and GitHub Copilot</strong> were used together throughout each project, guiding architecture decisions, solving problems in real time, and accelerating development at every stage.
+        </p>
+      </div>
+    </div>
+
+    <p style="font-size:11px;color:#1a2e3a;letter-spacing:3px;text-transform:uppercase;margin-bottom:32px;font-family:'Orbitron',sans-serif;">Hover card to reveal full details</p>
+  </div>
+
+  <div class="projects-grid reveal">
+
+    <!-- PROJECT 1 — JARVIS -->
+    <div class="proj-flip">
+      <div class="proj-inner">
+
+        <!-- FRONT -->
+        <div class="proj-front">
+          <div class="proj-num">01</div>
+          <div class="proj-category">Artificial Intelligence / Automation</div>
+          <div class="proj-vibe-badge"><span class="vibe-dot"></span>Built with Vibecoding</div>
+          <div class="proj-title">Jarvis AI Assistant</div>
+          <p class="proj-short">A terminal-based AI assistant that executes commands, answers questions, and automates tasks using natural language — built entirely through vibecoding with multiple AI tools.</p>
+          <div class="proj-tags">
+            <span class="proj-tag">Python</span>
+            <span class="proj-tag">AI</span>
+            <span class="proj-tag">Terminal</span>
+            <span class="proj-tag">Automation</span>
+            <span class="proj-tag">NLP</span>
+          </div>
+          <div class="hover-hint">Hover to reveal full details</div>
+        </div>
+
+        <!-- BACK -->
+        <div class="proj-back">
+          <div class="back-tabs">
+            <div class="back-tab active" onclick="switchTab(this,'j-feat')">Features</div>
+            <div class="back-tab" onclick="switchTab(this,'j-tech')">Tech</div>
+            <div class="back-tab" onclick="switchTab(this,'j-future')">Future</div>
+          </div>
+
+          <div class="back-panel active" id="j-feat">
+            <div>
+              <div class="back-section-label">How It Was Built</div>
+              <p class="vibe-callout">Vibecoded from scratch — every module, every feature, every line was shaped through AI-assisted development. ChatGPT, Claude, Gemini, and Copilot were all used to design the architecture and write the code.</p>
+            </div>
+            <div>
+              <div class="back-section-label" style="margin-bottom:8px;">AI Tools Used</div>
+              <div class="ai-tools-row">
+                <span class="ai-chip">ChatGPT</span>
+                <span class="ai-chip">Claude</span>
+                <span class="ai-chip">Gemini</span>
+                <span class="ai-chip">Copilot</span>
+              </div>
+            </div>
+            <div>
+              <div class="back-section-label" style="margin-bottom:8px;">Key Features</div>
+              <ul class="detail-list blue">
+                <li>Natural language command interface</li>
+                <li>Task automation system</li>
+                <li>Modular AI architecture</li>
+                <li>Fast terminal-based execution</li>
+                <li>Expandable plugin system</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="back-panel" id="j-tech">
+            <div>
+              <div class="back-section-label" style="margin-bottom:8px;">Technologies Used</div>
+              <ul class="detail-list purple">
+                <li>Python</li>
+                <li>APIs for AI processing</li>
+                <li>Terminal interface</li>
+                <li>Environment variables (.env)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="back-section-label" style="margin-bottom:8px;">About the Project</div>
+              <p class="back-desc">Python-based AI assistant that simulates a futuristic command system — processes natural language, performs automation and info retrieval, runs directly in terminal without heavy GUI.</p>
+            </div>
+          </div>
+
+          <div class="back-panel" id="j-future">
+            <div>
+              <div class="back-section-label" style="margin-bottom:8px;">Planned Improvements</div>
+              <ul class="detail-list green">
+                <li>Voice recognition</li>
+                <li>Smart home integration</li>
+                <li>Web dashboard</li>
+                <li>Context memory system</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PROJECT 2 — NEXA -->
+    <div class="proj-flip">
+      <div class="proj-inner">
+
+        <!-- FRONT -->
+        <div class="proj-front">
+          <div class="proj-num">02</div>
+          <div class="proj-category">Conversational AI / Chatbot Interface</div>
+          <div class="proj-vibe-badge"><span class="vibe-dot"></span>Built with Vibecoding</div>
+          <div class="proj-title">Nexa AI</div>
+          <p class="proj-short">A conversational AI chatbot with intelligent, context-aware responses — vibecoded using multiple AI assistants to build both the Python backend and the full web interface.</p>
+          <div class="proj-tags">
+            <span class="proj-tag">Python</span>
+            <span class="proj-tag">HTML/CSS/JS</span>
+            <span class="proj-tag">AI API</span>
+            <span class="proj-tag">Chatbot</span>
+            <span class="proj-tag">Web</span>
+          </div>
+          <div class="hover-hint">Hover to reveal full details</div>
+        </div>
+
+        <!-- BACK -->
+        <div class="proj-back">
+          <div class="back-tabs">
+            <div class="back-tab active" onclick="switchTab(this,'n-feat')">Features</div>
+            <div class="back-tab" onclick="switchTab(this,'n-tech')">Tech</div>
+            <div class="back-tab" onclick="switchTab(this,'n-future')">Future</div>
+          </div>
+
+          <div class="back-panel active" id="n-feat">
+            <div>
+              <div class="back-section-label">How It Was Built</div>
+              <p class="vibe-callout">Every component of Nexa — from the Python backend to the HTML/CSS interface — was vibecoded using multiple AI models. ChatGPT, Claude, Gemini, and Copilot guided the architecture, debugging, and all design decisions throughout.</p>
+            </div>
+            <div>
+              <div class="back-section-label" style="margin-bottom:8px;">AI Tools Used</div>
+              <div class="ai-tools-row">
+                <span class="ai-chip">ChatGPT</span>
+                <span class="ai-chip">Claude</span>
+                <span class="ai-chip">Gemini</span>
+                <span class="ai-chip">Copilot</span>
+              </div>
+            </div>
+            <div>
+              <div class="back-section-label" style="margin-bottom:8px;">Key Features</div>
+              <ul class="detail-list blue">
+                <li>Conversational chatbot interface</li>
+                <li>Context-aware responses</li>
+                <li>Real-time AI interaction</li>
+                <li>Lightweight web deployment</li>
+                <li>Minimal UI for fast interaction</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="back-panel" id="n-tech">
+            <div>
+              <div class="back-section-label" style="margin-bottom:8px;">Technologies Used</div>
+              <ul class="detail-list purple">
+                <li>Python backend</li>
+                <li>AI API integration</li>
+                <li>HTML / CSS / JavaScript</li>
+                <li>Environment configuration</li>
+              </ul>
+            </div>
+            <div>
+              <div class="back-section-label" style="margin-bottom:8px;">About the Project</div>
+              <p class="back-desc">Clean, intelligent chatbot for real-time natural conversation. Lightweight and web-deployable while still supporting powerful AI responses through integrated backend APIs.</p>
+            </div>
+          </div>
+
+          <div class="back-panel" id="n-future">
+            <div>
+              <div class="back-section-label" style="margin-bottom:8px;">Planned Improvements</div>
+              <ul class="detail-list green">
+                <li>Voice interaction</li>
+                <li>Memory and context tracking</li>
+                <li>Multi-AI model support</li>
+                <li>Mobile optimized UI</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="reveal">
+    <div class="sec-eyebrow">04 — Reach Me</div>
+    <div class="sec-title">OPEN <span class="accent">DOMAIN</span></div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="contact-grid reveal">
+    <a class="contact-card" href="mailto:palkarpratik84@gmail.com">
+      <div class="c-ico">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+      </div>
+      <div>
+        <div class="c-label">Email</div>
+        <div class="c-val">palkarpratik84@gmail.com</div>
+      </div>
+    </a>
+    <a class="contact-card" href="https://github.com/pratikpalkar" target="_blank">
+      <div class="c-ico">
+        <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+      </div>
+      <div>
+        <div class="c-label">GitHub</div>
+        <div class="c-val">github.com/pratikpalkar</div>
+      </div>
+    </a>
+    <a class="contact-card" href="https://linkedin.com/in/pratikpalkar" target="_blank">
+      <div class="c-ico">
+        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </div>
+      <div>
+        <div class="c-label">LinkedIn</div>
+        <div class="c-val">Pratik Palkar</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  PRATIK PALKAR &nbsp;&mdash;&nbsp; <span>UNLIMITED VOID</span> &nbsp;&mdash;&nbsp; 2025
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
