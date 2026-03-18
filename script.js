@@ -211,7 +211,7 @@ document.querySelectorAll('.proj-flip').forEach(card => {
 const lines = [
   'Code is my Cursed Technique',
   'Building AI for the Future',
-  'From Pimpri to the World',
+  'From Maharashtra to the World',
   'Unlimited Void of Bugs'
 ];
 let li=0, ci=0, adding=true;
